@@ -21,6 +21,10 @@ export default function HomeScreen() {
     router.push('/(coldroom)');
   };
 
+  const handleBlastFreezerPress = () => {
+    router.push('/(blastfreezer)');
+  };
+
   return (
     <LinearGradient
       colors={['#EBF8FF', '#DBEAFE', '#BFDBFE']}
@@ -46,17 +50,17 @@ export default function HomeScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity 
-            style={[styles.optionCard, styles.disabledCard]} 
-            onPress={() => handleComingSoon('Blast Freezer')}
+            style={styles.optionCard} 
+            onPress={handleBlastFreezerPress}
           >
             <LinearGradient
-              colors={['#6B7280', '#4B5563']}
+              colors={['#DC2626', '#B91C1C']}
               style={styles.cardGradient}
             >
               <Wind color="#FFFFFF" size={32} strokeWidth={2} />
               <Text style={styles.cardTitle}>Blast Freezer</Text>
               <Text style={styles.cardSubtitle}>Quick freezing applications</Text>
-              <Text style={styles.cardDescription}>Coming Soon - Rapid freezing calculations</Text>
+              <Text style={styles.cardDescription}>Calculate cooling loads for rapid freezing applications (-25°C to -40°C)</Text>
             </LinearGradient>
           </TouchableOpacity>
 
@@ -120,9 +124,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-  },
-  disabledCard: {
-    opacity: 0.7,
   },
   cardGradient: {
     padding: 24,

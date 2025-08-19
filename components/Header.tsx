@@ -5,10 +5,12 @@ import { ArrowLeft } from 'lucide-react-native';
 
 interface HeaderProps {
   title: string;
+  step?: number;
+  totalSteps?: number;
   showBack?: boolean;
 }
 
-export function Header({ title, showBack = true }: HeaderProps) {
+export function Header({ title, step, totalSteps, showBack = true }: HeaderProps) {
   const handleBack = () => {
     if (router.canGoBack()) {
       router.back();
@@ -27,6 +29,9 @@ export function Header({ title, showBack = true }: HeaderProps) {
         )}
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{title}</Text>
+          {step && totalSteps && (
+            <Text style={styles.stepIndicator}>Step {step} of {totalSteps}</Text>
+          )}
         </View>
         <View style={styles.spacer} />
       </View>
@@ -65,6 +70,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#1E3A8A',
     textAlign: 'center',
+  },
+  stepIndicator: {
+    fontSize: 12,
+    color: '#64748B',
+    marginTop: 4,
   },
   spacer: {
     width: 40,
